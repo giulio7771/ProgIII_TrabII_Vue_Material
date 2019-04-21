@@ -1,0 +1,65 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1,minimal-ui" name="viewport">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic|Material+Icons">
+    <link rel="stylesheet" href="https://unpkg.com/vue-material@beta/dist/vue-material.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/vue-material@beta/dist/theme/default.css">
+</head>
+
+<body>
+<div id="app">
+    <!-- Your code here -->
+
+    <template>
+        <section>
+
+        </section>
+        <footer>
+            <p><span id="footer-tag">@ 2019 Copyright:</span><span id="footer-name">Giulio Giovanella</span></p>
+        </footer>
+    </template>
+
+    <script>
+        export default {
+            name: 'TextFields',
+            data: () => ({
+                initial: 'Initial Value',
+                type: null,
+                withLabel: null,
+                inline: null,
+                number: null,
+                textarea: null,
+                autogrow: null,
+                disabled: null
+            })
+        }
+    </script>
+
+</div>
+
+<script src="https://unpkg.com/vue"></script>
+<script src="https://unpkg.com/vue-material@beta"></script>
+<script>
+    Vue.use(VueMaterial.default)
+
+    new Vue({
+        el: '#app'
+    })
+</script>
+<style>
+    #footer-tag{
+        color: grey;
+    }
+    #footer-name{
+        color: white;
+    }
+    footer{
+        background-color: blue;
+        text-align: center;
+        padding: .05%;
+    }
+</style>
+</body>
+</html>

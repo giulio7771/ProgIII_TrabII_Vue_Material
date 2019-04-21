@@ -1,0 +1,136 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1,minimal-ui" name="viewport">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic|Material+Icons">
+    <link rel="stylesheet" href="https://unpkg.com/vue-material@beta/dist/vue-material.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/vue-material@beta/dist/theme/default.css">
+</head>
+
+<body>
+<div id="app">
+    <!-- Your code here -->
+    <h1 id="title">Faça parte da atlética das Licenciaturas e desfrute do melhor do esporte universitário!</h1>
+
+    <template>
+        <section class="center-webkit">
+        <form>
+            <div id="logo">
+                <img src="atletica_logo.png">
+            </div>
+            <md-field>
+                <label><span>*</span>Login</label>
+                <md-input v-model="withLabel" placeholder=""></md-input>
+            </md-field>
+            <md-field>
+                <label><span>*</span>Password</label>
+                <md-input v-model="password" type="password"></md-input>
+            </md-field>
+            <div id="remember-me">
+                <md-checkbox v-model="boolean" value="my-checkbox">Remember me</md-checkbox>
+            </div>
+            <div id="forgot-password">
+                <a href="#">Forgot the password?</a>
+            </div>
+            <div id="sign-up">
+                <md-button>Sign up</md-button>
+            </div>
+            <div id="log-in">
+                <md-button class="md-raised md-primary">Log in</md-button>
+            </div>
+        </form>
+        </section>
+        <footer>
+            <p><span id="footer-tag">@ 2019 Copyright:</span><span id="footer-name">Giulio Giovanella</span></p>
+        </footer>
+    </template>
+
+    <script>
+        export default {
+            name: 'TextFields',
+            data: () => ({
+                initial: 'Initial Value',
+                type: null,
+                withLabel: null,
+                inline: null,
+                number: null,
+                textarea: null,
+                autogrow: null,
+                disabled: null
+            })
+        }
+    </script>
+
+</div>
+
+<script src="https://unpkg.com/vue"></script>
+<script src="https://unpkg.com/vue-material@beta"></script>
+<script>
+    Vue.use(VueMaterial.default)
+
+    new Vue({
+        el: '#app'
+    })
+</script>
+<style>
+    .center-webkit{
+        width: -webkit-fill-available;
+        height: -webkit-fill-available;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+    }
+    form{
+        width: 29%;
+    }
+    #logo{
+        text-align: center;
+    }
+    #title{
+        text-align: center;
+    }
+    #forgot-password{
+        width: 38%;
+        margin-top: 4.5%;
+        float: right;
+        padding-right: 0%;
+        color: blue;
+    }
+    #forgot-password:hover{
+        color: blue;
+    }
+    #remember-me{
+        width: 40%;
+        float: left;
+        padding-top: 0%;
+    }
+    #log-in{
+        padding-top: 9%;
+        float: right;
+    }
+    #sign-up{
+        padding-top: 9%;
+        float: left;
+    }
+    #sign-up md-button{
+        background-color: white;
+    }
+    span{
+        color: red;
+    }
+    #footer-tag{
+        color: grey;
+    }
+    #footer-name{
+        color: white;
+    }
+    footer{
+        background-color: blue;
+        text-align: center;
+        padding: .05%;
+    }
+</style>
+</body>
+</html>
