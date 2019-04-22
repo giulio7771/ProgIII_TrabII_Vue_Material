@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic|Material+Icons">
     <link rel="stylesheet" href="https://unpkg.com/vue-material@beta/dist/vue-material.min.css">
     <link rel="stylesheet" href="https://unpkg.com/vue-material@beta/dist/theme/default.css">
+    <title>AAALF</title>
 </head>
 
 <body>
@@ -13,8 +14,128 @@
     <!-- Your code here -->
 
     <template>
-        <section>
+        <header>
+            <div id="vue-menu">
+            <md-menu>
+            <md-menu md-size="medium" md-align-trigger>
+                <md-button md-menu-trigger>Align with trigger</md-button>
 
+                <md-menu-content>
+                    <md-menu-item>My Item 1</md-menu-item>
+                    <md-menu-item>My Item 2</md-menu-item>
+                    <md-menu-item>My Item 3</md-menu-item>
+                </md-menu-content>
+            </md-menu>
+
+
+                <md-menu md-size="medium" md-align-trigger>
+                    <md-button md-menu-trigger>Align with trigger</md-button>
+
+                    <md-menu-content>
+                        <md-menu-item>My Item 1</md-menu-item>
+                        <md-menu-item>My Item 2</md-menu-item>
+                        <md-menu-item>My Item 3</md-menu-item>
+                    </md-menu-content>
+                </md-menu>
+
+                <md-menu md-size="medium" md-align-trigger>
+                    <md-button md-menu-trigger>Align with trigger</md-button>
+
+                    <md-menu-content>
+                        <md-menu-item>My Item 1</md-menu-item>
+                        <md-menu-item>My Item 2</md-menu-item>
+                        <md-menu-item>My Item 3</md-menu-item>
+                    </md-menu-content>
+                </md-menu>
+                <md-menu md-size="medium" md-align-trigger>
+                    <md-button md-menu-trigger>Align with trigger</md-button>
+
+                    <md-menu-content>
+                        <md-menu-item>My Item 1</md-menu-item>
+                        <md-menu-item>My Item 2</md-menu-item>
+                        <md-menu-item>My Item 3</md-menu-item>
+                    </md-menu-content>
+                </md-menu>
+
+                <md-menu md-size="medium" md-align-trigger>
+                    <md-button md-menu-trigger>Align with trigger</md-button>
+
+                    <md-menu-content>
+                        <md-menu-item>My Item 1</md-menu-item>
+                        <md-menu-item>My Item 2</md-menu-item>
+                        <md-menu-item>My Item 3</md-menu-item>
+                    </md-menu-content>
+                </md-menu>
+
+
+
+            </md-menu>
+            </div>
+            <nav class="menu">
+                <div id="nav-bar">
+                <ul>
+                    <li>
+                        <a href="#">Home</a>
+                        <ul class="submenu">
+                            <li>
+                                <a href="#">Feed</a>
+                            </li>
+                            <li>
+                                <a href="#">Noticiário</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Parcerias</a>
+                        <ul class="submenu">
+                            <li>
+                                <a href="#">UFSC</a>
+                            </li>
+                            <li>
+                                <a href="#">DCE</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Eventos</a>
+                        <ul class="submenu">
+                            <li>
+                                <a href="#">Próximos</a>
+                            </li>
+                            <li>
+                                <a href="#">Histórico</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Calendário</a>
+                        <ul class="submenu">
+                            <li>
+                                <a href="#">Esportivo</a>
+                            </li>
+                            <li>
+                                <a href="#">Recreativo</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#">Cadastro</a>
+                        <ul class="submenu">
+                            <li>
+                                <a href="#">Atleta</a>
+                            </li>
+                            <li>
+                                <a href="#">Simpatizante</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            </nav>
+
+        </header>
+        <section>
+<br><br><br><br><br><br><br><br><br><br>    <br><br><br><br><br><br><br><br><br><br><br><br>
         </section>
         <footer>
             <p><span id="footer-tag">@ 2019 Copyright:</span><span id="footer-name">Giulio Giovanella</span></p>
@@ -41,14 +162,51 @@
 
 <script src="https://unpkg.com/vue"></script>
 <script src="https://unpkg.com/vue-material@beta"></script>
-<script>
-    Vue.use(VueMaterial.default)
-
-    new Vue({
-        el: '#app'
-    })
-</script>
 <style>
+    /*MENU*/
+    #vue-menu{
+        background-color: blue;
+        width: 62%;
+        margin-left: 25%;
+    }
+    #nav-bar{
+        display: none;
+        margin-top: -1.06%;
+        width: 100%;
+        height: 8.5%;
+        background-color: blue;
+        position: absolute;
+    }
+    .menu ul{
+        padding: 0px;
+        margin-right: 0px;
+        margin-left: 25%;
+        width: 70%;
+        background-color: blue;
+    }
+    .menu ul li{
+        background-color: blue;
+        color: white;
+        float: left;
+        width: 20%;
+        height: 160%;
+        display: inline-block;
+        text-align: center;
+        line-height: 160%;
+        font-size: 25px;
+
+    }
+    .menu ul li:hover{
+        background-color: aqua;
+    }
+    .menu ul ul{
+        display: none;
+    }
+    .menu ul li:hover > ul{
+        display: block;
+    }
+    /*END MENU*/
+
     #footer-tag{
         color: grey;
     }
@@ -61,5 +219,12 @@
         padding: .05%;
     }
 </style>
+<script>
+    Vue.use(VueMaterial.default)
+
+    new Vue({
+        el: '#app'
+    })
+</script>
 </body>
 </html>
