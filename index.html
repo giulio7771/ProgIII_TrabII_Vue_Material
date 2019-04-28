@@ -30,7 +30,7 @@
                 <md-input v-model="password" type="password"></md-input>
             </md-field>
             <div id="remember-me">
-                <md-checkbox v-model="boolean" value="my-checkbox">Remember me</md-checkbox>
+                <input type="checkbox">Remember me</input>
             </div>
             <div id="forgot-password">
                 <a href="#">Forgot the password?</a>
@@ -39,7 +39,7 @@
                 <md-button>Sign up</md-button>
             </div>
             <div id="log-in">
-                <md-button class="md-raised md-primary">Log in</md-button>
+                <md-button class="md-raised md-primary" onclick="logIn()">Log in</md-button>
             </div>
         </form>
         </section>
@@ -74,10 +74,17 @@
     new Vue({
         el: '#app'
     })
-    var usarmane = document.querySelector('')
+
+    function logIn(){
+        var remember_me = document.querySelector('#remember-me input');
+        var username = document.querySelector('');
+        if(remember_me.value){
+
+        }
+    }
 </script>
 <style>
-    
+
 </style>
 </body>
 </html>

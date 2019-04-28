@@ -108,53 +108,64 @@
 
 
             <div id="cadastro">
+                <header><h2>Faça parte da atlética!</h2>
+                        <h3>Junte-se a equipe com mais títulos
+                            acumulados do esporte universitário</h3>
+                </header>
                 <md-field>
-                    <label>Initial Value</label>
-                    <md-input v-model="initial"></md-input>
+                    <label><span>*</span>Nome</label>
+                    <md-input v-model="initial" id="nome"></md-input>
                 </md-field>
 
                 <md-field>
-                    <label>Initial Value (Read Only)</label>
-                    <md-input v-model="initial" readonly></md-input>
+                    <label><span>*</span>Idade</label>
+                    <md-input v-model="number" type="number" id="idade"></md-input>
                 </md-field>
-
                 <md-field>
-                    <label>Type here!</label>
-                    <md-input v-model="type"></md-input>
-                    <span class="md-helper-text">Helper text</span>
+                    <label><span>*</span>Sexo</label>
+                    <md-input v-model="initial" id="sexo"></md-input>
                 </md-field>
-
                 <md-field>
-                    <label>With label</label>
-                    <md-input v-model="withLabel" placeholder="A nice placeholder"></md-input>
+                    <label><span>*</span>Modalidade</label>
+                    <md-input v-model="initial" id="modalidade"></md-input>
                 </md-field>
-
-                <md-field md-inline>
-                    <label>Inline</label>
-                    <md-input v-model="inline"></md-input>
-                </md-field>
-
                 <md-field>
-                    <label>Number</label>
-                    <md-input v-model="number" type="number"></md-input>
+                    <label>Posição</label>
+                    <md-input v-model="initial" id="posicao"></md-input>
                 </md-field>
 
-                <md-field>
-                    <label>Textarea</label>
-                    <md-textarea v-model="textarea"></md-textarea>
-                </md-field>
-
-                <md-field>
-                    <label>Textarea with Autogrow</label>
-                    <md-textarea v-model="autogrow" md-autogrow></md-textarea>
-                </md-field>
-
-                <md-field>
-                    <label>Disabled</label>
-                    <md-input v-model="disabled" disabled></md-input>
-                </md-field>
+                <div id="salvar">
+                    <md-button>Salvar</md-button>
+                </div>
+                <div id="limpar">
+                    <md-button>Limpar</md-button>
+                </div>
             </div>
 
+
+            <div id="vue-table">
+                <header>
+                    <h2>Atletas cadastrados</h2>
+                </header>
+                <md-table v-model="pessoas">
+                    <md-table-row>
+                        <md-table-head md-numeric>Nome</md-table-head>
+                        <md-table-head>Idade</md-table-head>
+                        <md-table-head>Sexo</md-table-head>
+                        <md-table-head>Modalidade</md-table-head>
+                        <md-table-head>Posição</md-table-head>
+                    </md-table-row>
+
+                    <md-table-row slot-scope="{ item }">
+                        <md-table-cell>{{item.nome}}</md-table-cell>
+                        <md-table-cell md-numeric>{{item.idade}}</md-table-cell>
+                        <md-table-cell>{{item.sexo}}</md-table-cell>
+                        <md-table-cell>{{item.modalidade}}</md-table-cell>
+                        <md-table-cell>{{item.posicao}}</md-table-cell>
+                    </md-table-row>
+
+                </md-table>
+            </div>
 
 
         </section>
@@ -177,21 +188,59 @@
                 disabled: null
             })
         }
+
     </script>
 
 </div>
 
 <script src="https://unpkg.com/vue"></script>
 <script src="https://unpkg.com/vue-material@beta"></script>
-<style>
 
-</style>
 <script>
     Vue.use(VueMaterial.default)
 
     new Vue({
-        el: '#app'
+        el: '#app',
+        data: () => ({
+            pessoas: []
+        })
     })
+    //var pessoas = [];
+
+    var nome = document.querySelector('#nome');
+    var idade = document.querySelector('#idade');
+    var sexo = document.querySelector('#sexo');
+    var modalidade = document.querySelector('#modalidade');
+    var posicao = document.querySelector('#posicao');
+
+    var btnLimpar = document.querySelector('#limpar');
+    var btnSalvar = document.querySelector('#salvar');
+
+    var tabela = document.querySelector('#vue-table md-table');
+    
+    btnLimpar.onclick = cleanForm;
+    function cleanForm() {
+        nome.value = "";
+        idade.value = "";
+        sexo.value = "";
+        modalidade.value = "";
+        posicao.value = "";
+    }
+    
+    btnSalvar.onclick = function () {
+        var pessoa= {
+            nome:nome.value,
+            idade:idade.value,
+            sexo:sexo.value,
+            modalidade:modalidade.value,
+            posicao:posicao.value
+        }
+        pessoas.push(pessoa);
+        renderTable();
+    }
+    function renderTable(){
+
+    }
 </script>
 </body>
 </html>
