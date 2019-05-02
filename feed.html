@@ -8,6 +8,11 @@
     <link rel="stylesheet" href="https://unpkg.com/vue-material@beta/dist/theme/default.css">
     <link rel="stylesheet" href="feed.css">
     <title>AAALF</title>
+    <script>
+        if(!sessionStorage.getItem('logged')){
+            window.location = 'index.html';
+        }
+    </script>
 </head>
 
 <body>
@@ -170,26 +175,11 @@
 
         </section>
         <footer>
-            <p><span id="footer-tag">@ 2019 Copyright:</span><span id="footer-name">Giulio Giovanella</span></p>
+            <p><span id="footer-tag">@ 2019 Copyright:</span><span id="footer-name"> Giulio Giovanella</span></p>
         </footer>
     </template>
 
-    <script>
-        export default {
-            name: 'TextFields',
-            data: () => ({
-                initial: 'Initial Value',
-                type: null,
-                withLabel: null,
-                inline: null,
-                number: null,
-                textarea: null,
-                autogrow: null,
-                disabled: null
-            })
-        }
 
-    </script>
 
 </div>
 
@@ -202,11 +192,16 @@
     new Vue({
         el: '#app',
         data: () => ({
-            pessoas: []
-        })
+            pessoas: [{"nome":"Gatuno", "idade":"19","sexo":"M","modalidade":"fut","posicao":"meio"}]
+        }),
+        methods:{
+            loadData(){
+                return {"nome":"Gatuno", "idade":"19","sexo":"M","modalidade":"fut","posicao":"meio"};
+            }
+        }
     })
     //var pessoas = [];
-
+/*
     var nome = document.querySelector('#nome');
     var idade = document.querySelector('#idade');
     var sexo = document.querySelector('#sexo');
@@ -217,7 +212,7 @@
     var btnSalvar = document.querySelector('#salvar');
 
     var tabela = document.querySelector('#vue-table md-table');
-    
+
     btnLimpar.onclick = cleanForm;
     function cleanForm() {
         nome.value = "";
@@ -241,6 +236,7 @@
     function renderTable(){
 
     }
+    */
 </script>
 </body>
 </html>

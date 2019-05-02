@@ -1,0 +1,46 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width,initial-scale=1,minimal-ui" name="viewport">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic|Material+Icons">
+    <link rel="stylesheet" href="https://unpkg.com/vue-material@beta/dist/vue-material.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/vue-material@beta/dist/theme/default.css">
+    <link rel="stylesheet" href="index.css">
+    <title>AAALF</title>
+</head>
+
+<body>
+<div id="app">
+    <template>
+        <div>
+            <md-field>
+                <label>Username</label>
+                <md-input v-model="username"></md-input>
+            </md-field>
+            {{username}}
+
+
+        </div>
+    </template>
+
+
+</div>
+<script src="https://unpkg.com/vue"></script>
+<script src="https://unpkg.com/vue-material@beta"></script>
+
+<script>
+    Vue.use(VueMaterial.default)
+
+    new Vue({
+        el: '#app',
+        data: {
+            username: 'teste',
+            password: null
+        }
+
+    })
+
+</script>
+</body>
+</html>

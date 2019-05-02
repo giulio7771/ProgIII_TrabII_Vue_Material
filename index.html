@@ -23,7 +23,7 @@
             </div>
             <md-field>
                 <label><span>*</span>Login</label>
-                <md-input v-model="withLabel" placeholder=""></md-input>
+                <md-input v-model="username" placeholder=""></md-input>
             </md-field>
             <md-field>
                 <label><span>*</span>Password</label>
@@ -39,30 +39,14 @@
                 <md-button>Sign up</md-button>
             </div>
             <div id="log-in">
-                <md-button class="md-raised md-primary" onclick="logIn()">Log in</md-button>
+                <md-button class="md-raised md-primary" @click="logIn(username, password)">Log in</md-button>
             </div>
         </form>
         </section>
         <footer>
-            <p><span id="footer-tag">@ 2019 Copyright:</span><span id="footer-name">Giulio Giovanella</span></p>
+            <p><span id="footer-tag">@ 2019 Copyright:</span><span id="footer-name"> Giulio Giovanella</span></p>
         </footer>
     </template>
-
-    <script>
-        export default {
-            name: 'TextFields',
-            data: () => ({
-                initial: 'Initial Value',
-                type: null,
-                withLabel: null,
-                inline: null,
-                number: null,
-                textarea: null,
-                autogrow: null,
-                disabled: null
-            })
-        }
-    </script>
 
 </div>
 
@@ -70,21 +54,40 @@
 <script src="https://unpkg.com/vue-material@beta"></script>
 <script>
     Vue.use(VueMaterial.default)
-
     new Vue({
-        el: '#app'
-    })
+        el: '#app',
+        data:{
+            username: null,
+            password: null
+        },
+        methods:{
 
-    function logIn(){
-        var remember_me = document.querySelector('#remember-me input');
-        var username = document.querySelector('');
-        if(remember_me.value){
+
+            logIn(username, password){
+                //local storage para armazenar id e senha para não serem perdidos ao fechar o navegador
+                var remember_me = document.querySelector('#remember-me input');
+                console.log('remember-me: '+remember_me.checked);
+                if(remember_me.value){
+                    console.log(username);
+                    console.log(password);
+                    window.localStorage.setItem('username', username);
+                    window.localStorage.setItem('password', password);
+                    console.log('local storage'+window.localStorage.getItem('username'));
+                }
+                //session storage para bloquear o usuário de acessar a página sem logar já que o mesmo
+                //perde memória com o fim da sessão
+                sessionStorage.setItem('logged', true);
+                window.location = 'feed.html';
+            }
+
+
+
+
 
         }
-    }
-</script>
-<style>
+    })
 
-</style>
+
+</script>
 </body>
 </html>
