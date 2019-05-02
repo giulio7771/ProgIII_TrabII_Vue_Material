@@ -119,28 +119,28 @@
                 </header>
                 <md-field>
                     <label><span>*</span>Nome</label>
-                    <md-input v-model="initial" id="nome"></md-input>
+                    <md-input v-model="nomeV" id="nome"></md-input>
                 </md-field>
 
                 <md-field>
                     <label><span>*</span>Idade</label>
-                    <md-input v-model="number" type="number" id="idade"></md-input>
+                    <md-input v-model="idadeV" type="number" id="idade"></md-input>
                 </md-field>
                 <md-field>
                     <label><span>*</span>Sexo</label>
-                    <md-input v-model="initial" id="sexo"></md-input>
+                    <md-input v-model="sexoV" id="sexo"></md-input>
                 </md-field>
                 <md-field>
                     <label><span>*</span>Modalidade</label>
-                    <md-input v-model="initial" id="modalidade"></md-input>
+                    <md-input v-model="modalidadeV" id="modalidade"></md-input>
                 </md-field>
                 <md-field>
                     <label>Posição</label>
-                    <md-input v-model="initial" id="posicao"></md-input>
+                    <md-input v-model="posicaoV" id="posicao"></md-input>
                 </md-field>
 
                 <div id="salvar">
-                    <md-button>Salvar</md-button>
+                    <md-button @click="savePerson(nomeV, idadeV, sexoV, modalidadeV, posicaoV, pessoas)">Salvar</md-button>
                 </div>
                 <div id="limpar">
                     <md-button>Limpar</md-button>
@@ -153,13 +153,7 @@
                     <h2>Atletas cadastrados</h2>
                 </header>
                 <md-table v-model="pessoas">
-                    <md-table-row>
-                        <md-table-head md-numeric>Nome</md-table-head>
-                        <md-table-head>Idade</md-table-head>
-                        <md-table-head>Sexo</md-table-head>
-                        <md-table-head>Modalidade</md-table-head>
-                        <md-table-head>Posição</md-table-head>
-                    </md-table-row>
+
 
                     <md-table-row slot-scope="{ item }">
                         <md-table-cell>{{item.nome}}</md-table-cell>
@@ -187,21 +181,43 @@
 <script src="https://unpkg.com/vue-material@beta"></script>
 
 <script>
-    Vue.use(VueMaterial.default)
+    console.log('Get local storage: '+localStorage.getItem('pessoas'));
+    Vue.use(VueMaterial.default);
 
     new Vue({
         el: '#app',
         data: () => ({
-            pessoas: [{"nome":"Gatuno", "idade":"19","sexo":"M","modalidade":"fut","posicao":"meio"}]
+            pessoas: localStorage.getItem('pessoas'),
+            nomeV: "",
+            idadeV: "",
+            sexoV: "",
+            modalidadeV: "",
+            posicaoV: ""
+
         }),
         methods:{
             loadData(){
                 return {"nome":"Gatuno", "idade":"19","sexo":"M","modalidade":"fut","posicao":"meio"};
+            },
+            savePerson(nomep, idadep, sexop, modalidadep, posicaop, pessoasp){
+                console.log('NOMEP:'+nomep);
+                var pessoa= {
+                    nome:nomep,
+                    idade:idadep,
+                    sexo:sexop,
+                    modalidade:modalidadep,
+                    posicao:posicaop
+                };
+                cleanForm();
+                console.log('Nova pessoa: '+pessoa.nome);
+                console.log('Pessoas Lista before post: '+pessoasp);
+                pessoasp.put(pessoa);
+                console.log('Pessoas Lista after post: '+pessoasp);
+                localStorage.setItem('pessoas', pessoasp);
+
             }
         }
     })
-    //var pessoas = [];
-/*
     var nome = document.querySelector('#nome');
     var idade = document.querySelector('#idade');
     var sexo = document.querySelector('#sexo');
@@ -212,16 +228,27 @@
     var btnSalvar = document.querySelector('#salvar');
 
     var tabela = document.querySelector('#vue-table md-table');
-
     btnLimpar.onclick = cleanForm;
     function cleanForm() {
+        var nome = document.querySelector('#nome');
+        var idade = document.querySelector('#idade');
+        var sexo = document.querySelector('#sexo');
+        var modalidade = document.querySelector('#modalidade');
+        var posicao = document.querySelector('#posicao');
         nome.value = "";
         idade.value = "";
         sexo.value = "";
         modalidade.value = "";
         posicao.value = "";
     }
-    
+
+
+   /* function
+  var pessoas = [];
+
+
+
+
     btnSalvar.onclick = function () {
         var pessoa= {
             nome:nome.value,
@@ -231,12 +258,12 @@
             posicao:posicao.value
         }
         pessoas.push(pessoa);
-        renderTable();
+        localStorage.setItem('pessoas', pessoas);
     }
     function renderTable(){
 
     }
-    */
+*/
 </script>
 </body>
 </html>
